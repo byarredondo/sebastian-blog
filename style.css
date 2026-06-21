@@ -1,0 +1,311 @@
+:root{
+    --bg:#22446d;
+    --text:#e7edf7;
+    --secondary:#a2acbb;
+    --blue:#5fa0ff;
+    --blue-soft:#9cc9ff;
+    --border:rgba(255,255,255,.2);
+}
+
+@font-face{
+    font-family:'Roberta';
+    src:url('recurses/Roberta-Regular.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'Minecraftia';
+    src:url('recurses/Minecraftia-Regular.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'upheavtt';
+    src:url('recurses/upheavtt.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'Papernotes';
+    src:url('recurses/Papernotes.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Minecraftia', monospace;
+    overflow-x:hidden;
+}
+
+.sky-bg{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+
+    background:linear-gradient(180deg, #1c3a63 0%, #16314f 35%, var(--bg) 100%);
+}
+
+.cloud{
+    position:absolute;
+    background:rgba(255,255,255,.08);
+    border-radius:100px;
+    filter:blur(2px);
+}
+
+.cloud::before,
+.cloud::after{
+    content:'';
+    position:absolute;
+    background:rgba(255,255,255,.08);
+    border-radius:100px;
+}
+
+.cloud1{
+    width:200px; height:60px;
+    top:8%; left:-220px;
+    animation:drift 70s linear infinite;
+    animation-delay:0s;
+}
+.cloud1::before{ width:100px; height:100px; top:-40px; left:20px; }
+.cloud1::after{ width:80px; height:80px; top:-25px; left:100px; }
+
+.cloud2{
+    width:160px; height:50px;
+    top:65%; left:-180px;
+    animation:drift 90s linear infinite;
+    animation-delay:-30s;
+}
+.cloud2::before{ width:80px; height:80px; top:-30px; left:15px; }
+.cloud2::after{ width:60px; height:60px; top:-20px; left:80px; }
+
+.cloud3{
+    width:240px; height:70px;
+    top:25%; left:-260px;
+    animation:drift 110s linear infinite;
+    animation-delay:-70s;
+}
+.cloud3::before{ width:110px; height:110px; top:-45px; left:30px; }
+.cloud3::after{ width:90px; height:90px; top:-30px; left:120px; }
+
+.cloud4{
+    width:140px; height:45px;
+    top:48%; left:-160px;
+    animation:drift 80s linear infinite;
+    animation-delay:-15s;
+}
+.cloud4::before{ width:70px; height:70px; top:-25px; left:10px; }
+.cloud4::after{ width:50px; height:50px; top:-15px; left:70px; }
+
+@keyframes drift{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(calc(100vw + 300px)); }
+}
+
+.bird{
+    position:absolute;
+    width:30px;
+    height:15px;
+}
+
+.bird svg{
+    width:100%;
+    height:100%;
+    fill:none;
+    stroke:#1a1a1a;
+    stroke-width:2;
+    stroke-linecap:round;
+    opacity:.7;
+    animation:flap 0.5s ease-in-out infinite alternate;
+}
+
+.bird1{
+    top:18%; left:-50px;
+    animation:fly 25s linear infinite;
+}
+.bird2{
+    top:32%; left:-50px;
+    animation:fly 32s linear infinite;
+    animation-delay:-8s;
+}
+.bird3{
+    top:10%; left:-50px;
+    animation:fly 28s linear infinite;
+    animation-delay:-18s;
+}
+
+@keyframes fly{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(calc(100vw + 100px)); }
+}
+
+@keyframes flap{
+    from{ transform:scaleY(1); }
+    to{ transform:scaleY(0.5); }
+}
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    backdrop-filter:blur(12px);
+    background:rgba(24, 50, 82, 0.75);
+    border-bottom:1px solid var(--border);
+}
+
+nav{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 24px;
+}
+
+.logo{
+    font-family:'Roberta', cursive;
+    color:var(--blue);
+    font-weight:bold;
+    font-size:1.4rem;
+    letter-spacing:4px;
+}
+
+.nav-links{
+    display:flex;
+    gap:24px;
+}
+
+.nav-links a{
+    color:var(--secondary);
+    text-decoration:none;
+    display:inline-block;
+    transition:color .25s ease, transform .25s ease;
+}
+
+.nav-links a:hover{
+    color:var(--blue);
+    transform:scale(1.15);
+}
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    max-width:1100px;
+    margin:auto;
+    padding:0 24px;
+}
+
+.hero h1{
+    font-family:'Roberta', cursive;
+    font-size:clamp(4rem,10vw,8rem);
+    letter-spacing:9px;
+}
+
+.subtitle{
+    margin-top:20px;
+    color:var(--secondary);
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+section{
+    max-width:900px;
+    margin:auto;
+    padding:120px 24px;
+}
+
+h2{
+    font-family:'upheavtt', cursive;
+    font-size:2rem;
+    letter-spacing:4px;
+    margin-bottom:12px;
+}
+
+.line{
+    width:50vw;
+    height:2px;
+    background:var(--blue);
+    margin-bottom:30px;
+}
+
+section p{
+    color:var(--secondary);
+    line-height:1.9;
+    margin-bottom:15px;
+}
+
+.project{
+    padding:30px 0;
+    border-bottom:2px solid var(--border);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.project h3{
+    margin-bottom:8px;
+}
+
+.project a{
+    color:var(--blue-soft);
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+.blog-card{
+    background:rgba(255,255,255,.03);
+    border:2px solid var(--border);
+
+    padding:25px;
+    border-radius:14px;
+}
+
+.blog-card span{
+    font-family:'Minecraftia', monospace;
+    color:var(--blue);
+    font-size:.85rem;
+}
+
+.blog-card h3{
+    font-family:'Papernotes', sans-serif;
+    font-weight:400;
+    margin:15px 0;
+    letter-spacing:2px;
+}
+
+.contact-links{
+    display:flex;
+    gap:30px;
+}
+
+.contact-links a{
+    color:var(--blue-soft);
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:50px;
+    color:var(--secondary);
+    border-top:1px solid var(--border);
+}
