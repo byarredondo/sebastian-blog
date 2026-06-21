@@ -43,6 +43,7 @@
 
 html{
     scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
 body{
@@ -322,5 +323,12 @@ footer{
         justify-content:center;
         gap:12px 16px;
         font-size:.85rem;
+    }
+}
+
+@media (max-width:480px){
+    .hero h1{
+        font-size:clamp(2.5rem,14vw,4rem);
+        letter-spacing:3px;
     }
 }
