@@ -309,3 +309,18 @@ footer{
     color:var(--secondary);
     border-top:1px solid var(--border);
 }
+
+@media (max-width:768px){
+    nav{
+        flex-direction:column;
+        gap:10px;
+        padding:14px 16px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px 16px;
+        font-size:.85rem;
+    }
+}
