@@ -7,7 +7,13 @@ const playlist = [
     { title: "Ed Maverick - nube gris", src: "recurses/Music/Ed Maverick - nube gris.mp3" },
     { title: "Ed Maverick - violento", src: "recurses/Music/Ed Maverick - violento.mp3" },
     { title: "Ed Maverick - arcoíris", src: "recurses/Music/Ed Maverick - arcoíris.mp3" },
-    { title: "loop", src: "recurses/Music/loop.mp3" } 
+    { title: "loop", src: "recurses/Music/loop.mp3" },
+    { title: "Ed Maverick - NO TODO ES PARTE DE LA VIDA", src: "recurses/Music/Ed Maverick - NO TODO ES PARTE DE LA VIDA.mp3"},
+    { title: "Ed Maverick, niño viejo - me inundo", src: "recurses/Music/Ed Maverick, niño viejo - me inundo.mp3"},
+    { title: "ESCOMBRO", src: "recurses/Music/ESCOMBRO.mp3"},
+    { title: "Ed Maverick - tendría que hablar de luz", src: "recurses/Music/Ed Maverick - tendría que hablar de luz.mp3"},
+    { title: "Ed Maverick, Little Jesus - SAHUARO", src: "recurses/Music/Ed Maverick, Little Jesus - SAHUARO.mp3"},
+    { title: "Ed Maverick - en las buenas y en las malas", src: "recurses/Music/Ed Maverick - en las buenas y en las malas.mp3"} 
 ];
 
 let songIndex = 0;
@@ -121,4 +127,49 @@ audio.play().then(() => {
     };
     
     document.addEventListener('click', iniciarMusica);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnVerMas = document.getElementById("btn-ver-mas-portafolio");
+    const hiddenVideos = document.querySelectorAll(".hidden-video");
+    const btnVerMasBlog = document.getElementById("btn-ver-mas-blog");
+    const hiddenBlogs = document.querySelectorAll(".hidden-blog");
+
+    if (btnVerMas) {
+        btnVerMas.addEventListener("click", () => {
+            const estaOculto = hiddenVideos[0].style.display === "none" || hiddenVideos[0].style.display === "";
+
+            if (estaOculto) {
+                hiddenVideos.forEach(video => {
+                    video.style.display = "block";
+                });
+                btnVerMas.querySelector("span").textContent = "Ver menos";
+            } else {
+                hiddenVideos.forEach(video => {
+                    video.style.display = "none";
+                });
+                btnVerMas.querySelector("span").textContent = "Ver más";
+                
+                document.getElementById("portafolio").scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    if (btnVerMasBlog) {
+        btnVerMasBlog.addEventListener("click", () => {
+            const estaOculto = hiddenBlogs[0].style.display === "none" || hiddenBlogs[0].style.display === "";
+
+            if (estaOculto) {
+                hiddenBlogs.forEach(item => {
+                    item.style.display = "block";
+                });
+                btnVerMasBlog.querySelector("span").textContent = "Ver menos";
+            } else {
+                hiddenBlogs.forEach(item => {
+                    item.style.display = "none";
+                });
+                btnVerMasBlog.querySelector("span").textContent = "Ver más";
+            }
+        });
+    }
 });
